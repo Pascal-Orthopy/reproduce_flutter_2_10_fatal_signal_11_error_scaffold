@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
           title: const Text('App Bar Title'),
         ),
         body: const Text('Body Content'),
-        floatingActionButton: const BlurContainer(
+        floatingActionButton: const Button(
           child: Text('Blur Container Child'),
         ),
       ),
@@ -29,28 +29,23 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class BlurContainer extends StatelessWidget {
-  const BlurContainer({Key? key, required this.child}) : super(key: key);
+class Button extends StatelessWidget {
+  const Button({Key? key, required this.child}) : super(key: key);
   final Widget child;
 
   @override
   Widget build(BuildContext context) {
-    // Switch this bool to verify that without a Backdrop Filter this works!
-    const reproduce = true;
-
     return ClipRRect(
       borderRadius: const BorderRadius.all(Radius.circular(5)),
       child: Container(
         color: Colors.white.withOpacity(0.5),
-        child: reproduce
-            ? BackdropFilter(
-                filter: ImageFilter.blur(
-                  sigmaY: 30,
-                  sigmaX: 30,
-                ),
-                child: child,
-              )
-            : child,
+        child: BackdropFilter(
+          filter: ImageFilter.blur(
+            sigmaY: 30,
+            sigmaX: 30,
+          ),
+          child: child,
+        ),
       ),
     );
   }
