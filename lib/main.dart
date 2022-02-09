@@ -20,9 +20,34 @@ class MyApp extends StatelessWidget {
         appBar: AppBar(
           title: const Text('App Bar Title'),
         ),
-        body: const Text('Body Content'),
+        body: Stack(
+          fit: StackFit.expand,
+          children: const [
+            Image(
+              image: AssetImage("assets/background.jpeg"),
+              fit: BoxFit.fill,
+            ),
+            Text('Body Content'),
+          ],
+        ),
         floatingActionButton: const Button(
           child: Text('Blur Container Child'),
+        ),
+        bottomNavigationBar: BottomNavigationBar(
+          items: const [
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              label: 'Home',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.business),
+              label: 'Business',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.school),
+              label: 'School',
+            ),
+          ],
         ),
       ),
     );
@@ -44,7 +69,10 @@ class Button extends StatelessWidget {
             sigmaY: 30,
             sigmaX: 30,
           ),
-          child: child,
+          child: Padding(
+            padding: const EdgeInsets.all(10),
+            child: child,
+          ),
         ),
       ),
     );
