@@ -63,7 +63,7 @@ class Button extends StatelessWidget {
     return ClipRRect(
       borderRadius: const BorderRadius.all(Radius.circular(5)),
       child: Container(
-        color: Colors.white.withOpacity(0.5),
+        color: Colors.blue.withOpacity(0.5),
         child: BackdropFilter(
           filter: ImageFilter.blur(
             sigmaY: 30,
